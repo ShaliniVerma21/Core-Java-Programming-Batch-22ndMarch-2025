@@ -1,16 +1,22 @@
 package Day22;
+package Day25;
 
-//Program 7: Displaying list of files in a directory
+import java.io.*;
 
-import java.io.File;
-
-public class p7 {
- public static void main(String[] args) {
-     File folder = new File("."); // Current directory
-     String[] fileList = folder.list();
-     System.out.println("Files in current directory:");
-     for (String name : fileList) {
-         System.out.println(name);
-     }
- }
+/*
+ * 8. Deserialization – Reading Employee Objects
+ * -----------------------------------------------------
+ * Description: Reads a previously serialized Employee object from file.
+ * Purpose: Demonstrates retrieving objects stored in files.
+ * Real Example: Loading employee data for application startup or reports.
+ */
+public class p7{
+    public static void main(String[] args) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("employee.ser"))) {
+            Employee7 emp = (Employee7) ois.readObject();
+            System.out.println("Deserialized Employee: " + emp);
+        } catch (IOException | ClassNotFoundException e) {
+            System.err.println("Deserialization error: " + e.getMessage());
+        }
+    }
 }
