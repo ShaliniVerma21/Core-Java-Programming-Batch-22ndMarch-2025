@@ -1,20 +1,24 @@
 package Day22;
 
-//Program 4: Appending content without overwriting existing file data
+import java.io.*;
 
-import java.io.FileWriter;
-import java.io.IOException;
+/*
+ * 5. Appending Data to an Existing File
+ * -----------------------------------------------------
+ * Description: Adds new content to an existing file without overwriting it.
+ * Purpose: Demonstrates FileWriter with append mode and exception handling.
+ * Real Example: Logging messages to a server log file.
+ */
+public class p4 {
+    public static void main(String[] args) {
+        String filePath = "output.txt";
 
-public class p4{
- public static void main(String[] args) {
-     try {
-         FileWriter writer = new FileWriter("demo2.txt", true); // true = append mode
-         writer.write("\nThis line is appended to the file.");
-         writer.close();
-         System.out.println("Successfully appended to the file.");
-     } catch (IOException e) {
-         System.out.println("An error occurred while appending.");
-         e.printStackTrace();
-     }
- }
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath, true))) {
+            bw.newLine();
+            bw.write("Appending new line using Java.");
+            System.out.println("Data appended successfully.");
+        } catch (IOException e) {
+            System.err.println("Error appending file: " + e.getMessage());
+        }
+    }
 }
