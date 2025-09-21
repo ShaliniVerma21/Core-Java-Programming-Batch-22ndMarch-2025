@@ -1,5 +1,4 @@
 package Day22;
-package Day25;
 
 import java.io.*;
 
@@ -20,3 +19,4 @@ public class p7{
         }
     }
 }
+
